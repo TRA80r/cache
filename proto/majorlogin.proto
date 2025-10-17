@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package freefire;
+
+message LoginReq {
+  string open_id = 22;
+  string open_id_type = 23;
+  string login_token = 29;
+  string orign_platform_type = 99;
+}
+
+
+message LoginRes {
+//  uint64 account_id = 1;
+//  string region = 2;
+  string jwt_token = 8;
+//  string server_url = 10;
+//  bytes clan_aes_key = 22;
+//  bytes clan_aes_iv = 23;
+//  int64 timestamp = 21;
+}
