@@ -1,4 +1,5 @@
 import sqlite3
+import json
 import time
 import jwt
 from helper import create_jwt_token
@@ -83,6 +84,11 @@ def main():
     data = cursor.fetchall()
     for uid,password in tqdm(data):
         get_jwt_token(uid,password)
+
+    conn = sqlite3.connect("cache.db")
+    cursor.execute("select token from jwt_token")
+    with open('cache.json',"w") as w:
+        json.dump(cursor.fetchall(),w)
 
 
 if __name__ == '__main__':
