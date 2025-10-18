@@ -86,9 +86,10 @@ def main():
         get_jwt_token(uid,password)
 
     conn = sqlite3.connect("cache.db")
-    cursor.execute("select token from jwt_cache")
+    cursor = conn.cursor()
+    cursor.execute("SELECT token FROM jwt_cache")
     with open('cache.json',"w") as w:
-        json.dump(cursor.fetchall(),w)
+        json.dump([i[0] for i in cursor.fetchall()],w)
 
 
 if __name__ == '__main__':
